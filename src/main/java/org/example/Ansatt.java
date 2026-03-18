@@ -6,10 +6,11 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(schema = "oving_jpa")
+@Table(schema = "oblig3")
 public class Ansatt {
 
     @Id
+    private int ansattid;
     private String brukernavn;
     private String fornavn;
     private String etternavn;
@@ -19,7 +20,8 @@ public class Ansatt {
 
     public Ansatt() {}
 
-    public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato, String stilling, double maanedslonn) {
+    public Ansatt(int ansattid, String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato, String stilling, double maanedslonn) {
+        this.ansattid = ansattid;
         this.brukernavn = brukernavn;
         this.fornavn = fornavn;
         this.etternavn = etternavn;
@@ -27,6 +29,10 @@ public class Ansatt {
         this.stilling = stilling;
         this.maanedslonn = maanedslonn;
     }
+
+    public String getAnsattid() { return brukernavn; }
+
+    public void setAnsattid(int ansattid) { this.ansattid = ansattid; }
 
     public String getBrukernavn() {
         return brukernavn;
@@ -78,6 +84,6 @@ public class Ansatt {
 
     @Override
     public String toString() {
-        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "Månedslønn: " + maanedslonn;
+        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn;
     }
 }

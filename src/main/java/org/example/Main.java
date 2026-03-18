@@ -18,22 +18,22 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.print("Skrive et brukernavn:");
+        System.out.print("Skrive et ansatt id:");
 
-        String temp = in.nextLine();
+        int temp = in.nextInt();
 
-        Ansatt p = finnPersonMedBrukernavn(temp);
+        Ansatt p = finnPersonMedID(temp);
         System.out.println(p);
         in.close();
     }
 
-    private static Ansatt finnPersonMedBrukernavn(String brukernavn) {
+    private static Ansatt finnPersonMedID(int ansattid) {
 
         System.out.println("Kobler til database...");
         EntityManager em = emf.createEntityManager();
 
         try {
-            return em.find(Ansatt.class, brukernavn);
+            return em.find(Ansatt.class, ansattid);
         } finally {
             em.close();
         }
