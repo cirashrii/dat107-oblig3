@@ -1,16 +1,17 @@
-package org.example;
+package org.oblig3;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(schema = "oblig3")
 public class Ansatt {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ansattid;
+
     private String brukernavn;
     private String fornavn;
     private String etternavn;
@@ -18,16 +19,31 @@ public class Ansatt {
     private String stilling;
     private double maanedslonn;
 
+    @ManyToOne
+    @JoinColumn(name = "sjef")
+    private Avdeling avdeling;
+
     public Ansatt() {}
 
-    public Ansatt(int ansattid, String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato, String stilling, double maanedslonn) {
-        this.ansattid = ansattid;
+    public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato, String stilling, double maanedslonn, Avdeling avdeling) {
         this.brukernavn = brukernavn;
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.ansettelsedato = ansettelsedato;
         this.stilling = stilling;
         this.maanedslonn = maanedslonn;
+        this.avdeling = avdeling;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || getClass() != other.getClass()) return false;
+        return ansattid == ((Ansatt) other).ansattid;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(ansattid);
     }
 
     public String getAnsattid() { return brukernavn; }
@@ -84,6 +100,6 @@ public class Ansatt {
 
     @Override
     public String toString() {
-        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn + "\n";
+        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn + "\nAvdeling: " + avdeling;
     }
 }
