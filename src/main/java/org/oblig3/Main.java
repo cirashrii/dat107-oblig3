@@ -17,7 +17,8 @@ public class Main {
     public static void main(String[] args) {
 
         EntityManager em = emf.createEntityManager();
-        AnsattDAO dao = new AnsattDAO(em);
+        AnsattDAO andao = new AnsattDAO(em);
+        AvdelingDAO avdao = new AvdelingDAO(em);
 
         Scanner in = new Scanner(System.in);
 
@@ -28,9 +29,10 @@ public class Main {
             System.out.println("\n--- MENY ---");
             System.out.println("1: Finn ansatt (ID)");
             System.out.println("2: Finn ansatt (brukernavn)");
-            System.out.println("3: List alle ansatte");
-            System.out.println("4: Oppdater ansatt");
-            System.out.println("5: Ny ansatt");
+            System.out.println("3: Finn avdeling (ID)");
+            System.out.println("4: List alle ansatte");
+            System.out.println("5: Oppdater ansatt");
+            System.out.println("6: Ny ansatt");
             System.out.println("0: Avslutt");
 
             System.out.print("Velg: ");
@@ -42,7 +44,7 @@ public class Main {
                     System.out.print("Skriv ansatt-id: ");
                     int id = in.nextInt();
 
-                    Ansatt a1 = dao.finnAnsattMedId(id);
+                    Ansatt a1 = andao.finnAnsattMedId(id);
 
                     if (a1 != null) {
                         System.out.println(a1);
@@ -55,7 +57,7 @@ public class Main {
                     System.out.print("Brukernavn: ");
                     String bn = in.next();
 
-                    Ansatt a2 = dao.finnAnsattMedBrukernavn(bn);
+                    Ansatt a2 = andao.finnAnsattMedBrukernavn(bn);
 
                     if (a2 != null) {
                         System.out.println(a2);
@@ -65,11 +67,24 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("\n--- Alle ansatte ---");
-                    dao.finnAlleAnsatte().forEach(System.out::println);
+                    System.out.print("Skriv avdeling-id: ");
+                    int aId = in.nextInt();
+
+                    Avdeling av1 = avdao.finnAvdelingMedId(aId);
+
+                    if (av1 != null) {
+                        System.out.println(av1);
+                    } else {
+                        System.out.println("Fant ikke ansatt.");
+                    }
                     break;
 
                 case 4:
+                    System.out.println("\n--- Alle ansatte ---");
+                    andao.finnAlleAnsatte().forEach(System.out::println);
+                    break;
+
+                case 5:
                     System.out.print("Ansatt-id: ");
                     int idOppdatert = in.nextInt();
 
@@ -84,11 +99,11 @@ public class Main {
                     double lonnInput = in.nextDouble();
                     Double lonn = (lonnInput == -1) ? null : lonnInput;
 
-                    dao.oppdaterAnsatt(idOppdatert, stilling, lonn);
+                    andao.oppdaterAnsatt(idOppdatert, stilling, lonn);
                     System.out.println("Oppdatert.");
                     break;
 
-                case 5:
+                case 6:
                     Ansatt ny = new Ansatt();
 
                     // Enkelt – du kan hardkode eller spørre bruker
@@ -108,7 +123,7 @@ public class Main {
                     ny.setMaanedslonn(in.nextDouble());
 
                     // resten kan settes senere (avdeling osv.)
-                    dao.lagreAnsatt(ny);
+                    andao.lagreAnsatt(ny);
 
                     System.out.println("Ny ansatt lagret.");
                     break;

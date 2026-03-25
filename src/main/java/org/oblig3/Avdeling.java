@@ -11,18 +11,21 @@ public class Avdeling {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int avdelingid;
     private String navn;
-    private int sjef;
 
-    @OneToMany(mappedBy = "avdeling",
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "avdeling")
     private List<Ansatt> ansatte;
+
+    @OneToOne
+    @JoinColumn(name = "sjef")
+    private Ansatt sjef;
 
     public Avdeling() {}
 
-    public Avdeling(int avdelingid, String navn, int sjef) {
+    public Avdeling(int avdelingid, String navn, Ansatt sjef, List<Ansatt> ansatte) {
         this.avdelingid = avdelingid;
         this.navn = navn;
         this.sjef = sjef;
+        this.ansatte = ansatte;
     }
 
     public int getAvdelingid() {
@@ -41,11 +44,11 @@ public class Avdeling {
         this.navn = navn;
     }
 
-    public int getSjef() {
+    public Ansatt getSjef() {
         return sjef;
     }
 
-    public void setSjef(int sjef) {
+    public void setSjef(Ansatt sjef) {
         this.sjef = sjef;
     }
 
@@ -59,11 +62,10 @@ public class Avdeling {
 
     @Override
     public String toString() {
-        return "Avdeling{" +
-                "avdelingid=" + avdelingid +
-                ", navn='" + navn + '\'' +
-                ", sjef=" + sjef +
-                ", ansatte=" + ansatte +
-                '}';
+        return "\nAvdeling{" +
+                "Avdelingid: " + avdelingid +
+                "\nNavn: " + navn +
+                "\nSjef: " + (sjef != null ? sjef.getFornavn() + " " + sjef.getEtternavn() : null) +
+                "\nAntall ansatte i avdelingen: " + (ansatte != null ? ansatte.size() : 0) + "\n";
     }
 }

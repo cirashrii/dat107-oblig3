@@ -20,7 +20,7 @@ public class Ansatt {
     private double maanedslonn;
 
     @ManyToOne
-    @JoinColumn(name = "sjef")
+    @JoinColumn(name = "avdeling")
     private Avdeling avdeling;
 
     public Ansatt() {}
@@ -100,6 +100,6 @@ public class Ansatt {
 
     @Override
     public String toString() {
-        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn + "\nAvdeling: " + avdeling;
+        return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn + "\nAvdeling: " + (avdeling != null ? avdeling.getNavn() : null);
     }
 }

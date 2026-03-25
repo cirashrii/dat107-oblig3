@@ -5,7 +5,8 @@
 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="grethes-persistence-unit" transaction-type="RESOURCE_LOCAL">
-        <class>org.example.Ansatt</class>
+        <class>org.oblig3.Ansatt</class>
+        <class>org.oblig3.Avdeling</class>
         <properties>
             <!-- Generelle JPA properties -->
             <property name="jakarta.persistence.jdbc.driver"
