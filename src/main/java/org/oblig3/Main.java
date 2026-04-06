@@ -31,8 +31,9 @@ public class Main {
             System.out.println("2: Finn ansatt (brukernavn)");
             System.out.println("3: Finn avdeling (ID)");
             System.out.println("4: List alle ansatte");
-            System.out.println("5: Oppdater ansatt");
-            System.out.println("6: Ny ansatt");
+            System.out.println("5: List alle ansatte i en valgfri avdeling");
+            System.out.println("6: Oppdater ansatt");
+            System.out.println("7: Ny ansatt");
             System.out.println("0: Avslutt");
 
             System.out.print("Velg: ");
@@ -85,6 +86,13 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.print("Skriv avdeling-id: ");
+                    int aID = in.nextInt();
+                    System.out.println("\n--- Alle ansatte i valgt avdeling: ---");
+                    andao.finnAnsatteInnenforAvdeling(aID).forEach(System.out::println);
+                    break;
+
+                case 6:
                     System.out.print("Ansatt-id: ");
                     int idOppdatert = in.nextInt();
 
@@ -103,7 +111,7 @@ public class Main {
                     System.out.println("Oppdatert.");
                     break;
 
-                case 6:
+                case 7:
                     Ansatt ny = new Ansatt();
 
                     // Enkelt – du kan hardkode eller spørre bruker

@@ -30,6 +30,14 @@ public class AnsattDAO {
         return query.getResultList();
     }
 
+    public List<Ansatt> finnAnsatteInnenforAvdeling(int avdelingId) {
+        Avdeling avdeling = em.find(Avdeling.class, avdelingId);
+        TypedQuery<Ansatt> query = em.createQuery(
+                "SELECT a FROM Ansatt a WHERE a.avdeling = :aid", Ansatt.class);
+        query.setParameter("aid", avdeling);
+        return query.getResultList();
+    }
+
     public void oppdaterAnsatt(int id, String nyStilling, Double nyLonn) {
         Ansatt a = em.find(Ansatt.class, id);
         if (a != null) {
