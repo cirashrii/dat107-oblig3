@@ -98,6 +98,14 @@ public class Ansatt {
         this.maanedslonn = maanedslonn;
     }
 
+    public Avdeling getAvdeling() {
+        return avdeling;
+    }
+
+    public void setAvdeling(Avdeling avdeling) {
+        this.avdeling = avdeling;
+    }
+
     @Override
     public String toString() {
         return "Brukernavn: " + brukernavn + "\nFull navn: " + fornavn + " " + etternavn + "\nAnsattelsesdato: " + ansettelsedato + "\nStilling: " + stilling + "\nMånedslønn: " + maanedslonn + "\nAvdeling: " + (avdeling != null ? avdeling.getNavn() : null);

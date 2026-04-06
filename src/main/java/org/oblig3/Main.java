@@ -122,6 +122,19 @@ public class Main {
                     System.out.print("Månedslønn: ");
                     ny.setMaanedslonn(in.nextDouble());
 
+                    System.out.print("Avdeling: ");
+                    boolean avdelingFunnet = false;
+                    Avdeling tempAvdeling = null;
+                    while(!avdelingFunnet) {
+                        tempAvdeling = avdao.finnAvdelingMedId(in.nextInt());
+                        if (tempAvdeling != null) {
+                            ny.setAvdeling(tempAvdeling);
+                            avdelingFunnet = true;
+                        } else {
+                            System.out.print("Avdeling finnes ikke.\nAvdeling: ");
+                        }
+                    }
+
                     // resten kan settes senere (avdeling osv.)
                     andao.lagreAnsatt(ny);
 

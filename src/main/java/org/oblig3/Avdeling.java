@@ -62,8 +62,8 @@ public class Avdeling {
 
     @Override
     public String toString() {
-        return "\nAvdeling{" +
-                "Avdelingid: " + avdelingid +
+        return "\nAvdeling" +
+                "\nAvdelingid: " + avdelingid +
                 "\nNavn: " + navn +
                 "\nSjef: " + (sjef != null ? sjef.getFornavn() + " " + sjef.getEtternavn() : null) +
                 "\nAntall ansatte i avdelingen: " + (ansatte != null ? ansatte.size() : 0) + "\n";
