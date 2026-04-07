@@ -56,9 +56,10 @@ public class ProsjektdeltagelseDAO {
         int total = 0;
         try {
             Prosjekt p = em.find(Prosjekt.class, prosjektId);
+            Prosjektdeltagelse d = em.find(Prosjektdeltagelse.class, prosjektId);
             System.out.println(prosjektId + " : " + p.getProsjektnavn());
-            for (Prosjektdeltagelse d : p.getProsjektdeltagelser()) {
-                System.out.println(d);
+            for (Ansatt a : p.getAlleAnsatte()) {
+                System.out.println(a);
                 total += d.getTimer();
             }
             System.out.println("Total timer i prosjektet: " + total);

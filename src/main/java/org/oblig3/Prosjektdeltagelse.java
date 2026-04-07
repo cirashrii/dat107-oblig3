@@ -4,16 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(schema = "oblig3")
+@IdClass(Prosjektdeltagelse.class)
 public class Prosjektdeltagelse {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-
     @ManyToOne
     @JoinColumn(name = "ansattId")
     private Ansatt ansatt;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "prosjektId")
     private Prosjekt prosjekt;
@@ -41,10 +39,6 @@ public class Prosjektdeltagelse {
     public int getTimer() {return timetall;}
 
     public void setTimer(int timer) {this.timetall = timetall;}
-
-    public int getId() {return id;}
-
-    public void setId(int id) {this.id = id;}
 
     public String getRolle() {return rolle;}
 
