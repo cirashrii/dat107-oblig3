@@ -166,10 +166,38 @@ public class Main {
                     System.out.print("Prosjekt navn (uten mellomrom): ");
                     String nyProsjektnavn = in.next();
 
-                    System.out.print("Prosjektbeskrivelse: ");
+                    System.out.print("Prosjektbeskrivelse (uten mellomrom): ");
                     String nyProsjektbeskrivelse = in.next();
 
                     prdao.nyttProsjekt(nyProsjektid,nyProsjektnavn,nyProsjektbeskrivelse);
+                    break;
+
+                case 9:
+                    System.out.print("Prosjektid: ");
+                    Prosjekt prosjektDeltagelseProsjekt = em.find(Prosjekt.class, in.nextInt());
+
+                    System.out.print("Ansattid: ");
+                    Ansatt prosjektDeltagelseAnsatt = em.find(Ansatt.class, in.nextInt());
+
+                    System.out.print("Timer: ");
+                    int prosjektDeltagelseTimer = in.nextInt();
+
+                    prdetdao.registerer(prosjektDeltagelseProsjekt, prosjektDeltagelseAnsatt, prosjektDeltagelseTimer);
+
+                    break;
+
+                case 10:
+                    System.out.print("Prosjektid: ");
+                    int timeForingProsjekt = in.nextInt();
+
+                    System.out.print("Ansattid: ");
+                    int timeForingAnsatt = in.nextInt();
+
+                    System.out.print("Timer: ");
+                    int timeForingTimer = in.nextInt();
+
+                    prdetdao.oppdater(timeForingProsjekt, timeForingAnsatt, timeForingTimer);
+
                     break;
 
                 case 0:
