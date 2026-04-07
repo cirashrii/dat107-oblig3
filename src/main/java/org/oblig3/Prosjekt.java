@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 @Table(schema = "oblig3")
 public class Prosjekt {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int prosjektId;
 
     @ManyToMany
