@@ -10,7 +10,7 @@ public class Prosjekt {
     private int prosjektId;
 
     @ManyToMany
-    @JoinTable (name = "prosjekt",
+    @JoinTable (name = "oblig3",
                 joinColumns = @JoinColumn(name = "prosjektid"),
                 inverseJoinColumns = @JoinColumn(name = "ansattid"))
     private List<Ansatt> ansatte;

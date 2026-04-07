@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(schema = "oblig3")
-@IdClass(Prosjektdeltagelse.class)
+@IdClass(ProsjektdeltagelsePK.class)
 public class Prosjektdeltagelse {
     @Id
     @ManyToOne

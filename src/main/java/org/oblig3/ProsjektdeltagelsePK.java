@@ -3,7 +3,7 @@ package org.oblig3;
 @SuppressWarnings("unused")
 public class ProsjektdeltagelsePK {
 
-    private int ansatt;   
+    private int ansatt;
     private int prosjekt;
 
     public ProsjektdeltagelsePK() {}
