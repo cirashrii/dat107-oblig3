@@ -22,7 +22,6 @@ INSERT INTO Ansatt(brukernavn, fornavn, etternavn, ansettelsedato, stilling, maa
                                                                                               ('ff','Frank','Fredstad','2022-10-07','Teknologiansvarlig',4269),
                                                                                               ('rn','Rikard','Nickson','1972-06-17','Spion',50000);
 
--- HUSK Å TA MED EN ANSATT TIL!!!!!!!! --------------------------------------
 
 
 CREATE TABLE Avdeling(
@@ -52,18 +51,30 @@ UPDATE Ansatt
 SET avdeling = 3
 WHERE ansattid = 2 OR ansattid = 6 OR ansattid = 7 OR ansattid = 9;
 
--- CREATE TABLE Prosjekt(
---                          prosjektid SERIAL PRIMARY KEY,
---                          navn VARCHAR(40),
---                          beskrivelse VARCHAR(400)
--- );
---
--- CREATE TABLE ProsjektAnsattRelasjon(
---                                        ansattid INT,
---                                        prosjektid INT,
---                                        PRIMARY KEY (ansattid, prosjektid),
---                                        rolle VARCHAR(40),
---                                        timetall FLOAT,
---                                        FOREIGN KEY(ansattid) REFERENCES Ansatt(ansattid),
---                                        FOREIGN KEY(prosjektid) REFERENCES Prosjekt(prosjektid)
--- );
+CREATE TABLE Prosjekt(
+                         prosjektid SERIAL PRIMARY KEY,
+                         navn VARCHAR(40),
+                         beskrivelse VARCHAR(400)
+);
+
+CREATE TABLE ProsjektDeltagelse(
+                                   ansattid INT,
+                                   prosjektid INT,
+                                   PRIMARY KEY (ansattid, prosjektid),
+                                   rolle VARCHAR(40),
+                                   timetall FLOAT,
+                                   FOREIGN KEY(ansattid) REFERENCES Ansatt(ansattid),
+                                   FOREIGN KEY(prosjektid) REFERENCES Prosjekt(prosjektid)
+);
+
+INSERT INTO Prosjekt(navn,beskrivelse)
+VALUES('Infiltrere HVL','Datteren til Emanuel Lemon har ikke fått god karakter i DAT107. Målet er å endre eksamenskarakteren hennes fra D til A.'),
+      ('Teste ut glittergranater', 'Teknologiansvarlige Fredstad har utviklet glittergranater, men de er ikke helt klar til å bli brukt enno. Måle er å teste og sjekke at de er helt klare til å bruke i oppdrag.');
+
+INSERT INTO ProsjektDeltagelse
+VALUES(1,1,'Hovedansvar',3),
+      (5,1,'Sjef',10),
+      (6,1,'Sideansvar/sidekick',2),
+      (3,2,'Vitne',4),
+      (8,2,'Ansvarlig',53),
+      (9,2,'Testperson',13);
