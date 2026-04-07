@@ -35,7 +35,7 @@ public class ProsjektdeltagelseDAO {
         try {
             tx.begin();
             Prosjektdeltagelse p = em.createQuery(
-                            "SELECT p FROM Prosjektdeltagelse p WHERE p.ansatt.id = :ansattId AND p.prosjekt.prosjektId = :prosjektId", Prosjektdeltagelse.class)
+                            "SELECT p FROM Prosjektdeltagelse p WHERE p.ansatt.ansattid = :ansattId AND p.prosjekt.prosjektId = :prosjektId", Prosjektdeltagelse.class)
                     .setParameter("ansattId", ansattId)
                     .setParameter("prosjektId", prosjektId)
                     .getSingleResult();
