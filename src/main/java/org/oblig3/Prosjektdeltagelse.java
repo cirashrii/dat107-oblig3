@@ -38,7 +38,7 @@ public class Prosjektdeltagelse {
 
     public int getTimer() {return timetall;}
 
-    public void setTimer(int timer) {this.timetall = timetall;}
+    public void setTimer(int timetall) {this.timetall = timetall;}
 
     public String getRolle() {return rolle;}
 
