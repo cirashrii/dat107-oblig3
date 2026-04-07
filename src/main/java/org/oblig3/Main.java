@@ -200,6 +200,13 @@ public class Main {
 
                     break;
 
+                case 11:
+                    System.out.print("Prosjektid: ");
+                    int prosjektInfo = in.nextInt();
+
+                    prdetdao.skrivUtProsjekt(prosjektInfo);
+                    break;
+
                 case 0:
                     ferdig = true;
                     break;
