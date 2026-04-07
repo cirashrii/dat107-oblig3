@@ -178,10 +178,13 @@ public class Main {
                     System.out.print("Ansattid: ");
                     Ansatt prosjektDeltagelseAnsatt = em.find(Ansatt.class, in.nextInt());
 
+                    System.out.print("Rolle: ");
+                    String prosjektDeltagelseRolle = in.next();
+
                     System.out.print("Timer: ");
                     int prosjektDeltagelseTimer = in.nextInt();
 
-                    prdetdao.registerer(prosjektDeltagelseProsjekt, prosjektDeltagelseAnsatt, prosjektDeltagelseTimer);
+                    prdetdao.registerer(prosjektDeltagelseProsjekt, prosjektDeltagelseAnsatt, prosjektDeltagelseRolle, prosjektDeltagelseTimer);
 
                     break;
 

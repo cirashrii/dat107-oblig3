@@ -10,13 +10,14 @@ public class ProsjektdeltagelseDAO {
         this.em = em;
     }
 
-    public void registerer(Prosjekt prosjekt, Ansatt ansatt, int timer){
+    public void registerer(Prosjekt prosjekt, Ansatt ansatt, String rolle, int timer){
         EntityTransaction tx = em.getTransaction();
         try{
             tx.begin();
             Prosjektdeltagelse ny = new Prosjektdeltagelse();
             ny.setProsjekt(prosjekt);
             ny.setAnsatt(ansatt);
+            ny.setRolle(rolle);
             ny.setTimer(timer);
             em.persist(ny);
             tx.commit();
