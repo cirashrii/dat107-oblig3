@@ -18,12 +18,14 @@ public class Prosjektdeltagelse {
     @JoinColumn(name = "prosjektId")
     private Prosjekt prosjekt;
 
-    private int timer;
+    private int timetall;
+    private String rolle;
 
-    public Prosjektdeltagelse(Prosjekt prosjekt, Ansatt ansatt, int timer){
+    public Prosjektdeltagelse(Prosjekt prosjekt, Ansatt ansatt, int timetall, String rolle){
         this.prosjekt = prosjekt;
         this.ansatt = ansatt;
-        this.timer = timer;
+        this.timetall = timetall;
+        this.rolle = rolle;
     }
 
     public Prosjektdeltagelse(){}
@@ -36,20 +38,25 @@ public class Prosjektdeltagelse {
 
     public void setAnsatt(Ansatt ansatt) {this.ansatt = ansatt;}
 
-    public int getTimer() {return timer;}
+    public int getTimer() {return timetall;}
 
-    public void setTimer(int timer) {this.timer = timer;}
+    public void setTimer(int timer) {this.timetall = timetall;}
 
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
 
+    public String getRolle() {return rolle;}
+
+    public void setRolle(String rolle) {this.rolle = rolle;}
+
     @Override
     public String toString() {
         return "Prosjektdeltagelse[" +
-                "ansatt= " +  ansatt.getAnsattid() +
-                ", stilling=" + ansatt.getStilling() +
-                ", timer=" + timer +
+                "ansatt = " +  ansatt.getAnsattid() +
+                ", stilling = " + ansatt.getStilling() +
+                ", timer = " + timetall +
+                ", rolle = " + rolle +
                 ']';
     }
 }

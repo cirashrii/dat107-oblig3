@@ -3,6 +3,7 @@ package org.oblig3;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,9 @@ public class Ansatt {
     @ManyToOne
     @JoinColumn(name = "avdeling")
     private Avdeling avdeling;
+
+    @ManyToMany(mappedBy = "ansatte")
+    private List<Prosjekt> prosjekter;
 
     public Ansatt() {}
 

@@ -9,14 +9,19 @@ public class Prosjekt {
     @Id
     private int prosjektId;
 
-    @OneToMany(mappedBy = "prosjekt", fetch = FetchType.EAGER)
-    private List<Prosjektdeltagelse> prosjektdeltagelser;
+    @ManyToMany
+    @JoinTable (name = "prosjekt",
+                joinColumns = @JoinColumn(name = "prosjektid"),
+                inverseJoinColumns = @JoinColumn(name = "ansattid"))
+    private List<Ansatt> ansatte;
 
-    private String prosjektnavn;
+    private String navn;
+    private String beskrivelse;
 
-    public Prosjekt(int prosjektId, String prosjektnavn){
+    public Prosjekt(int prosjektId, String navn, String beskrivelse){
         this.prosjektId = prosjektId;
-        this.prosjektnavn = prosjektnavn;
+        this.navn = navn;
+        this.beskrivelse = beskrivelse;
     }
 
     public Prosjekt() {}
@@ -25,17 +30,18 @@ public class Prosjekt {
 
     public void setProsjektId(int prosjektId) {this.prosjektId = prosjektId;}
 
-    public String getProsjektnavn() {return prosjektnavn;}
+    public String getProsjektnavn() {return navn;}
 
-    public void setProsjektnavn(String prosjektnavn) {this.prosjektnavn = prosjektnavn;}
+    public void setProsjektnavn(String navn) {this.navn = navn;}
 
-    public List<Prosjektdeltagelse> getProsjektdeltagelser() {return prosjektdeltagelser;}
+    public List<Ansatt> getAlleAnsatte() {return ansatte;}
 
     @Override
     public String toString() {
         return "Prosjekt[" +
-                "prosjektId=" + prosjektId +
-                ", prosjektnavn='" + prosjektnavn +
+                "prosjektId = " + prosjektId +
+                ", navn = " + navn +
+                ", beskrivelse = " + beskrivelse +
                 ']';
     }
 }

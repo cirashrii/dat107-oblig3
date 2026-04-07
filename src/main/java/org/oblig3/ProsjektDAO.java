@@ -11,10 +11,10 @@ public class ProsjektDAO {
             = Persistence.createEntityManagerFactory("oblig3",
             Map.of("jakarta.persistence.jdbc.password", "pass"));
 
-    public Prosjekt nyttProsjekt(int prosjektid, String prosjekt){
+    public Prosjekt nyttProsjekt(int prosjektid, String navn, String beskrivelse){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        Prosjekt ny = new Prosjekt(prosjektid, prosjekt);
+        Prosjekt ny = new Prosjekt(prosjektid, navn, beskrivelse);
         try{
             tx.begin();
             em.persist(ny);
