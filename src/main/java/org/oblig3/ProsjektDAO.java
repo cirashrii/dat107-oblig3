@@ -7,12 +7,13 @@ import jakarta.persistence.Persistence;
 import java.util.Map;
 
 public class ProsjektDAO {
-    EntityManagerFactory emf
-            = Persistence.createEntityManagerFactory("oblig3",
-            Map.of("jakarta.persistence.jdbc.password", "pass"));
+    private EntityManager em;
+
+    public ProsjektDAO(EntityManager em) {
+        this.em = em;
+    }
 
     public Prosjekt nyttProsjekt(int prosjektid, String navn, String beskrivelse){
-        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         Prosjekt ny = new Prosjekt(prosjektid, navn, beskrivelse);
         try{
@@ -31,7 +32,6 @@ public class ProsjektDAO {
     }
 
     public Prosjekt finnProsjektMedId(int id) {
-        EntityManager em = emf.createEntityManager();
         try {
             return em.find(Prosjekt.class, id);
         } finally {

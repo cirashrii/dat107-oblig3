@@ -3,6 +3,7 @@ package org.oblig3;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.eclipse.persistence.sessions.Project;
 
 import java.util.Scanner;
 
@@ -19,6 +20,8 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         AnsattDAO andao = new AnsattDAO(em);
         AvdelingDAO avdao = new AvdelingDAO(em);
+        ProsjektDAO prdao = new ProsjektDAO(em);
+        ProsjektdeltagelseDAO prdetdao = new ProsjektdeltagelseDAO(em);
 
         Scanner in = new Scanner(System.in);
 
@@ -154,6 +157,19 @@ public class Main {
                     andao.lagreAnsatt(ny);
 
                     System.out.println("Ny ansatt lagret.");
+                    break;
+
+                case 8:
+                    System.out.print("Prosjekt-ID: ");
+                    int nyProsjektid = in.nextInt();
+
+                    System.out.print("Prosjekt navn (uten mellomrom): ");
+                    String nyProsjektnavn = in.next();
+
+                    System.out.print("Prosjektbeskrivelse: ");
+                    String nyProsjektbeskrivelse = in.next();
+
+                    prdao.nyttProsjekt(nyProsjektid,nyProsjektnavn,nyProsjektbeskrivelse);
                     break;
 
                 case 0:

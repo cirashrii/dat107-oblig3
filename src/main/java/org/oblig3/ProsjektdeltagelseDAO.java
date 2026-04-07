@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import java.util.Map;
 
 public class ProsjektdeltagelseDAO {
-    EntityManagerFactory emf
-            = Persistence.createEntityManagerFactory("oblig3",
-            Map.of("jakarta.persistence.jdbc.password", "pass"));
+    private EntityManager em;
+
+    public ProsjektdeltagelseDAO(EntityManager em) {
+        this.em = em;
+    }
 
     public void registerer(Prosjekt prosjekt, Ansatt ansatt, int timer){
-        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try{
             tx.begin();
@@ -30,7 +31,6 @@ public class ProsjektdeltagelseDAO {
     }
 
     public void oppdater(int ansattId, int prosjektId, int timer){
-        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
@@ -52,7 +52,6 @@ public class ProsjektdeltagelseDAO {
     }
 
     public void skrivUtProsjekt(int prosjektId) {
-        EntityManager em = emf.createEntityManager();
         int total = 0;
         try {
             Prosjekt p = em.find(Prosjekt.class, prosjektId);
