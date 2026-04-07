@@ -42,7 +42,6 @@ public class Main {
             System.out.println("8: Nytt prosjekt");
             System.out.println("9: Registrere prosjektdeltagelse");
             System.out.println("10: Føre timer for en ansatt");
-            System.out.println("11: List informasjon om prosjekt");
             System.out.println("0: Avslutt");
 
             System.out.print("Velg: ");
@@ -198,13 +197,6 @@ public class Main {
 
                     prdetdao.oppdater(timeForingProsjekt, timeForingAnsatt, timeForingTimer);
 
-                    break;
-
-                case 11:
-                    System.out.print("Prosjektid: ");
-                    int prosjektInfo = in.nextInt();
-
-                    prdetdao.skrivUtProsjekt(prosjektInfo);
                     break;
 
                 case 0:
