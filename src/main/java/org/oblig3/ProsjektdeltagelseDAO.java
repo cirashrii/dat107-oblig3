@@ -46,8 +46,6 @@ public class ProsjektdeltagelseDAO {
             if (tx.isActive()) {
                 tx.rollback();
             }
-        } finally {
-            em.close();
         }
     }
 
