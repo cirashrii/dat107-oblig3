@@ -57,7 +57,7 @@ CREATE TABLE Prosjekt(
                          beskrivelse VARCHAR(400)
 );
 
-CREATE TABLE ProsjektDeltagelse(
+CREATE TABLE Prosjektdeltagelse(
                                    ansattid INT,
                                    prosjektid INT,
                                    PRIMARY KEY (ansattid, prosjektid),
@@ -71,7 +71,7 @@ INSERT INTO Prosjekt(navn,beskrivelse)
 VALUES('Infiltrere HVL','Datteren til Emanuel Lemon har ikke fått god karakter i DAT107. Målet er å endre eksamenskarakteren hennes fra D til A.'),
       ('Teste ut glittergranater', 'Teknologiansvarlige Fredstad har utviklet glittergranater, men de er ikke helt klar til å bli brukt enno. Måle er å teste og sjekke at de er helt klare til å bruke i oppdrag.');
 
-INSERT INTO ProsjektDeltagelse
+INSERT INTO Prosjektdeltagelse
 VALUES(1,1,'Hovedansvar',3),
       (5,1,'Sjef',10),
       (6,1,'Sideansvar/sidekick',2),

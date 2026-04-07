@@ -27,6 +27,7 @@ public class Main {
         while (!ferdig) {
 
             System.out.println("\n--- MENY ---");
+            System.out.println("--- ANSATT OG AVDELING ---");
             System.out.println("1: Finn ansatt (ID)");
             System.out.println("2: Finn ansatt (brukernavn)");
             System.out.println("3: Finn avdeling (ID)");
@@ -34,6 +35,11 @@ public class Main {
             System.out.println("5: List alle ansatte i en valgfri avdeling");
             System.out.println("6: Oppdater ansatt");
             System.out.println("7: Ny ansatt");
+            System.out.println("\n--- PROSJEKT ---");
+            System.out.println("8: Nytt prosjekt");
+            System.out.println("9: Registrere prosjektdeltagelse");
+            System.out.println("10: Føre timer for en ansatt");
+            System.out.println("11: List informasjon om prosjekt");
             System.out.println("0: Avslutt");
 
             System.out.print("Velg: ");
@@ -82,6 +88,7 @@ public class Main {
 
                 case 4:
                     System.out.println("\n--- Alle ansatte ---");
+                    System.out.println("OBS! Spesifiserer ikke hvem som er sjef.");
                     andao.finnAlleAnsatte().forEach(System.out::println);
                     break;
 
